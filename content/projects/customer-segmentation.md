@@ -1,27 +1,25 @@
 ---
 title: Customer Segmentation
 short_label: Analytics · ML
-summary: Unsupervised segmentation structure for discovering differentiated customer
-  groups.
+summary: Unsupervised segmentation structure for discovering differentiated
+  customer groups.
 status: in-development
-visible: true
-featured: false
+visible: false
 display_order: 3
+featured: false
 featured_order: 99
 categories:
-- Analytics
-- Data Science
-- ML
+  - Analytics
+  - Data Science
+  - ML
 filter_keys:
-- analytics
-- science
-- ml
+  - analytics
+  - science
+  - ml
 cover_image: /assets/media/projects/project-segmentation.svg
 cover_alt: Customer segmentation cluster visual
 tech_stack:
-- Python
-- scikit-learn
+  - Python
+  - scikit-learn
 case_study: false
-repository_url: ''
-live_demo_url: ''
 ---
