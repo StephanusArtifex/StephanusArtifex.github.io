@@ -6,7 +6,7 @@ summary: ETL pipeline architecture with data-quality, orchestration and lineage
 status: in-development
 visible: false
 display_order: 2
-featured: true
+featured: false
 featured_order: 2
 categories:
   - Data Engineering
