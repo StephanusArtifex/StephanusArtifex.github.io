@@ -1,0 +1,31 @@
+hero_visual: /assets/media/site/home-global-intelligence.webp
+hero_visual_alt: Global data-intelligence map with regional colour, network paths
+  and analytical motifs
+selected_work_heading: Selected Work
+selected_work_view_all_label: View all work
+capabilities_heading: Capabilities
+capabilities:
+- title: Analytics & BI
+  body: SQL analysis, data modelling and decision-ready dashboards.
+  icon_label: BI
+  icon: ''
+- title: Data Engineering
+  body: Reliable ingestion, transformation, orchestration and data pipelines.
+  icon_label: DE
+  icon: ''
+- title: Data Science
+  body: Statistical analysis, experimentation, forecasting and segmentation.
+  icon_label: DS
+  icon: ''
+- title: Machine Learning
+  body: Classification, regression, model evaluation and scalable workflows.
+  icon_label: ML
+  icon: ''
+confluence:
+- Data
+- Structure
+- Analysis
+- Models
+- Intelligence
+- Systems
+show_selected_work_images: true

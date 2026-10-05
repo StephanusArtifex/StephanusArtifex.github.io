@@ -1,0 +1,35 @@
+name: Steve Muganda
+manifesto:
+- People
+- Data
+- Systems
+- Impact
+opening: I work with data as evidence and engineering as craft.
+intro: 'My practice spans data analytics, data science, machine learning and data
+  engineering. One concern governs the work: to turn complex information into systems
+  that are intelligible, dependable and scalable.'
+chain: I am interested in the full data lifecycle, from schema and query to pipelines,
+  models and operational use. I am partial to work that can be explained, tested,
+  reproduced and improved.
+domains: Data Analytics · Data Science · Machine Learning · Data Engineering
+focus_title: End-to-end analytical and data systems.
+focus_body: From SQL and analytical reporting to reliable data pipelines, statistical
+  modelling, forecasting and machine learning.
+approach_title: Rigour before spectacle.
+approach_body: Sound data, explicit assumptions, careful evaluation and engineering
+  that remains legible under scrutiny.
+interests_title: Systems built around evidence.
+interests_body: Data modelling, statistical analysis, forecasting, machine learning,
+  data pipelines and the engineering needed to keep them dependable.
+collaboration_title: Serious work, clearly made.
+collaboration_body: Open to employment, freelance and collaborative work where technical
+  depth, disciplined execution and clear communication matter.
+inscription:
+- Evidence first.
+- Structure before scale.
+- Intelligence as consequence.
+beyond_work: Outside technical work, I read widely, study languages and history, and
+  return often to music, theology, philosophy and literature. I value long walks through
+  unfamiliar places.
+portrait: /assets/media/profile/steve-muganda-portrait.png
+hero_hook: Analytics that inform. Models that forecast. Systems built to scale.

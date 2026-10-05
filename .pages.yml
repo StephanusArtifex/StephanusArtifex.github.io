@@ -1,0 +1,696 @@
+media:
+- name: notes_media
+  label: Notes images
+  input: assets/media/notes
+  output: /assets/media/notes
+  rename: safe
+  categories:
+  - image
+  extensions:
+  - png
+  - jpg
+  - jpeg
+  - webp
+  - svg
+- name: project_media
+  label: Project images
+  input: assets/media/projects
+  output: /assets/media/projects
+  rename: safe
+  categories:
+  - image
+  extensions:
+  - png
+  - jpg
+  - jpeg
+  - webp
+  - svg
+- name: profile_media
+  label: Profile images
+  input: assets/media/profile
+  output: /assets/media/profile
+  rename: safe
+  categories:
+  - image
+  extensions:
+  - png
+  - jpg
+  - jpeg
+  - webp
+- name: site_media
+  label: Site visuals
+  input: assets/media/site
+  output: /assets/media/site
+  rename: safe
+  categories:
+  - image
+  extensions:
+  - png
+  - jpg
+  - jpeg
+  - webp
+  - svg
+- name: tech_media
+  label: Technology icons
+  input: assets/media/tech
+  output: /assets/media/tech
+  rename: safe
+  categories:
+  - image
+  extensions:
+  - png
+  - jpg
+  - jpeg
+  - webp
+  - svg
+content:
+- name: publishing
+  label: Publishing
+  type: group
+  items:
+  - name: notes
+    label: Notes
+    type: collection
+    path: content/notes
+    format: yaml-frontmatter
+    filename:
+      template: '{title}.md'
+      field: false
+    operations:
+      create: true
+      rename: true
+      delete: true
+    view:
+      fields:
+      - title
+      - published
+      - publish_date
+      - category
+      primary: title
+      sort:
+      - publish_date
+      - title
+      search:
+      - title
+      - category
+      - excerpt
+      default:
+        sort: publish_date
+        order: desc
+    fields:
+    - name: title
+      label: Title
+      type: string
+      required: true
+    - name: category
+      label: Category
+      type: string
+      required: true
+    - name: excerpt
+      label: Excerpt
+      type: text
+      required: true
+      options:
+        minlength: 30
+        maxlength: 320
+    - name: preview_image
+      label: Preview image
+      type: image
+      required: false
+      options:
+        media: notes_media
+        extensions:
+        - png
+        - jpg
+        - jpeg
+        - webp
+        - svg
+        rename: safe
+    - name: body
+      label: Article
+      type: rich-text
+      required: true
+      options:
+        format: markdown
+        switcher: false
+        media: notes_media
+        rename: safe
+        extensions:
+        - png
+        - jpg
+        - jpeg
+        - webp
+        - svg
+        categories:
+        - image
+    - name: featured
+      label: Featured
+      type: boolean
+      default: false
+    - name: publish_date
+      label: Publication date
+      type: date
+      default: ''
+      options:
+        time: false
+        format: yyyy-MM-dd
+    - name: published
+      label: Published
+      type: boolean
+      default: false
+  - name: projects
+    label: Work / Case Studies
+    type: collection
+    path: content/projects
+    format: yaml-frontmatter
+    filename:
+      template: '{title}.md'
+      field: false
+    operations:
+      create: true
+      rename: true
+      delete: true
+    view:
+      fields:
+      - title
+      - status
+      - visible
+      - featured
+      - display_order
+      primary: title
+      sort:
+      - display_order
+      - title
+      search:
+      - title
+      - summary
+      - categories
+      default:
+        sort: display_order
+        order: asc
+    fields:
+    - name: title
+      label: Project title
+      type: string
+      required: true
+    - name: short_label
+      label: Short label
+      type: string
+      required: true
+      description: Compact taxonomy shown on the Home page, e.g. Predictive analytics · ML.
+    - name: summary
+      label: Summary
+      type: text
+      required: true
+      options:
+        minlength: 20
+        maxlength: 420
+    - name: status
+      label: Status
+      type: select
+      required: true
+      options:
+        values:
+        - value: in-development
+          label: In development
+        - value: demonstration
+          label: Demonstration
+        - value: published
+          label: Published
+        - value: archived
+          label: Archived
+    - name: visible
+      label: Show on Work page
+      type: boolean
+      default: true
+    - name: display_order
+      label: Work-page order
+      type: number
+      default: 99
+    - name: featured
+      label: Feature on Home
+      type: boolean
+      default: false
+    - name: featured_order
+      label: Featured order
+      type: number
+      default: 99
+    - name: categories
+      label: Display categories
+      type: string
+      list:
+        min: 1
+        max: 6
+    - name: filter_keys
+      label: Work filter keys
+      type: select
+      list:
+        min: 1
+        max: 4
+      options:
+        values:
+        - analytics
+        - science
+        - engineering
+        - ml
+    - name: cover_image
+      label: Project image
+      type: image
+      required: false
+      options:
+        media: project_media
+        extensions:
+        - png
+        - jpg
+        - jpeg
+        - webp
+        - svg
+        rename: safe
+    - name: cover_alt
+      label: Image alt text
+      type: string
+      required: false
+    - name: tech_stack
+      label: Tech stack
+      type: string
+      list: true
+    - name: case_study
+      label: Publish case-study page
+      type: boolean
+      default: false
+    - name: business_need
+      label: Business need
+      type: text
+      required: false
+    - name: data_features
+      label: Data & features
+      type: text
+      required: false
+    - name: approach_steps
+      label: Approach steps
+      type: string
+      list: true
+    - name: modelling
+      label: Modelling
+      type: text
+      required: false
+    - name: evaluation
+      label: Evaluation
+      type: text
+      required: false
+    - name: model_results
+      label: Model results
+      type: string
+      list: true
+    - name: business_implications
+      label: Business implications
+      type: string
+      list: true
+    - name: observed_impact
+      label: Observed impact
+      type: string
+      list: true
+      description: Use only for genuine, evidenced real-world outcomes.
+    - name: limitations
+      label: Limitations
+      type: text
+      required: false
+    - name: conclusion
+      label: Conclusion / next steps
+      type: text
+      required: false
+    - name: repository_url
+      label: Repository URL
+      type: string
+      required: false
+    - name: live_demo_url
+      label: Live demo URL
+      type: string
+      required: false
+- name: site-content
+  label: Site Content
+  type: group
+  items:
+  - name: homepage
+    label: Homepage
+    type: file
+    path: content/site/homepage.yml
+    format: yaml
+    operations:
+      delete: false
+    fields:
+    - name: hero_visual
+      label: Hero data visual
+      type: image
+      required: true
+      options:
+        media: site_media
+        extensions:
+        - png
+        - jpg
+        - jpeg
+        - webp
+        - svg
+        rename: safe
+    - name: hero_visual_alt
+      label: Hero visual alt text
+      type: string
+      required: true
+    - name: selected_work_heading
+      label: Selected Work heading
+      type: string
+      required: true
+    - name: selected_work_view_all_label
+      label: View-all label
+      type: string
+      required: true
+    - name: show_selected_work_images
+      label: Show project images on Home
+      type: boolean
+      default: true
+    - name: capabilities_heading
+      label: Capabilities heading
+      type: string
+      required: true
+    - name: capabilities
+      label: Capabilities
+      type: object
+      list:
+        min: 1
+        max: 6
+        collapsible:
+          collapsed: true
+          summary: '{title}'
+      fields:
+      - name: title
+        label: Title
+        type: string
+        required: true
+      - name: body
+        label: Description
+        type: text
+        required: true
+      - name: icon_label
+        label: Fallback icon letters
+        type: string
+        required: false
+        description: Used when no custom icon is uploaded.
+      - name: icon
+        label: Optional icon image
+        type: image
+        required: false
+        options:
+          media: site_media
+          extensions:
+          - png
+          - jpg
+          - jpeg
+          - webp
+          - svg
+          rename: safe
+    - name: confluence
+      label: Confluence sequence
+      type: string
+      list:
+        min: 2
+        max: 10
+  - name: profile
+    label: About / Profile
+    type: file
+    path: content/site/profile.yml
+    format: yaml
+    operations:
+      delete: false
+    fields:
+    - name: name
+      label: Name
+      type: string
+      required: true
+    - name: manifesto
+      label: Left-rail manifesto
+      type: string
+      list:
+        min: 1
+        max: 6
+    - name: opening
+      label: Opening line
+      type: text
+      required: true
+    - name: intro
+      label: Main paragraph
+      type: text
+      required: true
+    - name: chain
+      label: Second paragraph
+      type: text
+      required: true
+    - name: domains
+      label: Professional disciplines
+      type: string
+      required: true
+    - name: hero_hook
+      label: Homepage hook
+      type: string
+      required: true
+      description: Short market-facing line beneath the professional disciplines.
+    - name: focus_title
+      label: Focus title
+      type: string
+    - name: focus_body
+      label: Focus copy
+      type: text
+    - name: approach_title
+      label: Approach title
+      type: string
+    - name: approach_body
+      label: Approach copy
+      type: text
+    - name: interests_title
+      label: Interests title
+      type: string
+    - name: interests_body
+      label: Interests copy
+      type: text
+    - name: collaboration_title
+      label: Collaboration title
+      type: string
+    - name: collaboration_body
+      label: Collaboration copy
+      type: text
+    - name: inscription
+      label: Inscription
+      type: string
+      list:
+        min: 1
+        max: 4
+    - name: beyond_work
+      label: Beyond Work
+      type: text
+    - name: portrait
+      label: Portrait
+      type: image
+      options:
+        media: profile_media
+        extensions:
+        - png
+        - jpg
+        - jpeg
+        - webp
+        rename: safe
+      required: true
+  - name: exploring
+    label: Currently Exploring
+    type: file
+    path: content/site/exploring.yml
+    format: yaml
+    operations:
+      delete: false
+    fields:
+    - name: items
+      label: Items
+      type: string
+      list:
+        min: 1
+        max: 8
+  - name: tech-stack
+    label: Tech Stack
+    type: file
+    path: content/site/tech-stack.yml
+    format: yaml
+    operations:
+      delete: false
+    fields:
+    - name: items
+      label: Technologies
+      type: object
+      list:
+        min: 1
+        max: 24
+        collapsible:
+          collapsed: true
+          summary: '{name}'
+      fields:
+      - name: name
+        label: Name
+        type: string
+        required: true
+      - name: icon
+        label: Icon
+        type: image
+        required: false
+        options:
+          media: tech_media
+          extensions:
+          - png
+          - jpg
+          - jpeg
+          - webp
+          - svg
+          rename: safe
+        description: Upload or replace the technology icon.
+      - name: visible
+        label: Visible
+        type: boolean
+        default: true
+  - name: current-direction
+    label: Current Direction
+    type: file
+    path: content/site/current-direction.yml
+    format: yaml
+    operations:
+      delete: false
+    fields:
+    - name: heading
+      label: Heading
+      type: string
+      required: true
+    - name: body
+      label: Direction
+      type: text
+      required: true
+    - name: cta
+      label: Collaboration invitation
+      type: string
+      required: true
+  - name: site-settings
+    label: Contact & Site Settings
+    type: file
+    path: content/site/settings.yml
+    format: yaml
+    operations:
+      delete: false
+    fields:
+    - name: site_title
+      label: Site title
+      type: string
+      required: true
+    - name: site_description
+      label: Site description
+      type: text
+      required: true
+    - name: brand_logo
+      label: Brand monogram / logo
+      type: image
+      required: true
+      options:
+        media: site_media
+        extensions:
+        - png
+        - jpg
+        - jpeg
+        - webp
+        - svg
+        rename: safe
+    - name: brand_logo_alt
+      label: Brand logo alt text
+      type: string
+      required: false
+      description: Leave blank when the adjacent site title supplies the accessible name.
+    - name: github_url
+      label: GitHub URL
+      type: string
+      required: true
+    - name: linkedin_url
+      label: LinkedIn URL
+      type: string
+      required: false
+    - name: email
+      label: Public email
+      type: string
+      required: false
+    - name: location
+      label: Location / remote status
+      type: string
+      required: true
+    - name: availability
+      label: Availability line
+      type: string
+      required: true
+    - name: work_with_me_label
+      label: CTA label
+      type: string
+      required: true
+  - name: page-copy
+    label: Page Headings & Labels
+    type: file
+    path: content/site/page-copy.yml
+    format: yaml
+    operations:
+      delete: false
+    fields:
+    - name: work_heading
+      label: Work page heading
+      type: string
+      required: true
+    - name: work_collaboration_prompt
+      label: Work collaboration prompt
+      type: text
+      required: true
+    - name: notes_eyebrow
+      label: Notes eyebrow
+      type: string
+      required: true
+    - name: notes_heading
+      label: Notes page heading
+      type: string
+      required: true
+    - name: notes_intro
+      label: Notes introduction
+      type: text
+      required: true
+    - name: notes_empty_eyebrow
+      label: Empty Notes eyebrow
+      type: string
+      required: true
+    - name: notes_empty_heading
+      label: Empty Notes heading
+      type: string
+      required: true
+    - name: notes_empty_body
+      label: Empty Notes message
+      type: text
+      required: true
+    - name: about_eyebrow
+      label: About label
+      type: string
+      required: true
+    - name: exploring_heading
+      label: Currently Exploring heading
+      type: string
+      required: true
+    - name: tech_stack_heading
+      label: Tech Stack heading
+      type: string
+      required: true
+    - name: beyond_work_heading
+      label: Beyond Work heading
+      type: string
+      required: true
+settings:
+  commit:
+    identity: user
+    templates:
+      create: 'content: create {filename}'
+      update: 'content: update {filename}'
+      delete: 'content: remove {filename}'
+      rename: 'content: rename {oldFilename} to {newFilename}'

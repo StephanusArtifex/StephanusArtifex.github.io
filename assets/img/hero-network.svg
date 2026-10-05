@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 420" role="img" aria-labelledby="title desc">
+  <title id="title">Abstract data network</title>
+  <desc id="desc">A restrained network of linked data points.</desc>
+  <g fill="none" stroke="#17375E" stroke-opacity=".14" stroke-width="1">
+    <path d="M48 178L120 84 218 112 282 45 371 88 491 58M48 178l76 97 94-46 82 70 116-32 75-76M120 84l4 191M218 112l0 117M282 45l18 254M371 88l45 179M491 58v133M124 275l176 24M218 229l198 38M48 178l170-66M282 45l-64 184M371 88l-71 211M491 191l-120-103"/>
+    <path d="M82 56l102 62 71-79 78 92 83-75 90 82M82 56l-34 122M184 118l34 111M255 39l27 6M333 131l38-43M416 56l75 2M506 138l-15 53"/>
+  </g>
+  <g fill="#17375E" fill-opacity=".38">
+    <circle cx="48" cy="178" r="4"/><circle cx="120" cy="84" r="3"/><circle cx="218" cy="112" r="4"/><circle cx="282" cy="45" r="3"/><circle cx="371" cy="88" r="4"/><circle cx="491" cy="58" r="3"/>
+    <circle cx="124" cy="275" r="4"/><circle cx="218" cy="229" r="3"/><circle cx="300" cy="299" r="4"/><circle cx="416" cy="267" r="3"/><circle cx="491" cy="191" r="4"/>
+  </g>
+  <g fill="#C89A3C" fill-opacity=".72">
+    <circle cx="184" cy="118" r="4"/><circle cx="255" cy="39" r="4"/><circle cx="333" cy="131" r="4"/><circle cx="416" cy="56" r="4"/><circle cx="506" cy="138" r="4"/>
+  </g>
+</svg>
