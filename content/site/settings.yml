@@ -1,12 +1,9 @@
 site_title: Steve Muganda
-site_description: 'Steve Muganda: Data Analytics, Data Science, Machine Learning and
-  Data Engineering.'
+site_description: "Steve Muganda: Data Analytics, Data Science, Machine Learning
+  and Data Engineering."
+brand_logo: /assets/media/site/monogram.svg
 github_url: https://github.com/StephanusArtifex
-linkedin_url: ''
-email: ''
+email: mugandasteve@gmail.com
 location: Remote · Open to relocation
 availability: Employment · Freelance · Collaboration
 work_with_me_label: Work with me
-brand_logo: /assets/media/site/monogram.svg
-brand_logo_alt: ''
-resume_file: ''
