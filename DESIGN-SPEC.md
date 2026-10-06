@@ -263,3 +263,11 @@ The global visual is a background intelligence field, not a dashboard or explana
 Content and replaceable media are CMS-managed. Visual constitution remains code-managed.
 
 CMS-managed image slots include the brand mark, homepage data field, profile portrait, project cover images, Note images, technology icons and optional capability icons. A replacement image must propagate automatically on the next build without editing HTML or CSS.
+
+## v14 interaction contract
+
+- `Work with me` always opens the dedicated Contact page.
+- Résumé is a direct homepage artefact link beneath the hero actions. It never receives a dedicated page.
+- Each showcased project presents two adjacent actions: **Read more** and **GitHub**.
+- **Read more** always resolves to a generated project article/detail page.
+- **GitHub** links to the project's repository when supplied; missing repository URLs display as pending, never as broken anchors.

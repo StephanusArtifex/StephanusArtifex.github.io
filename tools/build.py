@@ -106,7 +106,7 @@ def normalise_list(value: object) -> list[str]:
 
 
 def load_site_data() -> dict:
-    required = ["settings.yml", "profile.yml", "homepage.yml", "current-direction.yml", "exploring.yml", "tech-stack.yml", "page-copy.yml"]
+    required = ["settings.yml", "profile.yml", "homepage.yml", "current-direction.yml", "exploring.yml", "tech-stack.yml", "page-copy.yml", "contact.yml"]
     missing = [name for name in required if not (SITE_CONTENT / name).exists()]
     if missing:
         raise RuntimeError("Missing site content file(s): " + ", ".join(missing))
@@ -118,6 +118,7 @@ def load_site_data() -> dict:
         "exploring": load_yaml(SITE_CONTENT / "exploring.yml"),
         "tech": load_yaml(SITE_CONTENT / "tech-stack.yml"),
         "copy": load_yaml(SITE_CONTENT / "page-copy.yml"),
+        "contact": load_yaml(SITE_CONTENT / "contact.yml"),
     }
 
 
@@ -151,9 +152,13 @@ def load_projects() -> list[dict]:
                 "observed_impact": normalise_list(data.get("observed_impact")),
                 "case_study": bool(data.get("case_study", False)),
                 "status": str(data.get("status", "in-development")),
+                "repository_url": str(data.get("repository_url", "")).strip(),
+                "live_demo_url": str(data.get("live_demo_url", "")).strip(),
                 "body_md": body,
                 "source": path,
             })
+            if project["status"] == "published" and not project["repository_url"]:
+                raise ValueError("published projects require repository_url")
             projects.append(project)
         except Exception as exc:
             errors.append(f"{path.relative_to(ROOT)}: {exc}")
@@ -244,6 +249,7 @@ def apply_global_settings(soup: BeautifulSoup, settings: dict) -> None:
     for button in soup.select("a.button-primary"):
         if "work with me" in button.get_text(" ", strip=True).lower():
             button.string = str(settings.get("work_with_me_label", "Work with me"))
+            button["href"] = "/contact/"
 
     github = str(settings.get("github_url", "")).strip()
     linkedin = str(settings.get("linkedin_url", "")).strip()
@@ -261,8 +267,18 @@ def apply_global_settings(soup: BeautifulSoup, settings: dict) -> None:
         if email:
             parts.append(f'<a href="mailto:{esc(email)}">Email</a>')
         else:
-            parts.append('<span class="contact-pending" title="Add public email address before launch">Email</span>')
+            parts.append('<span class="contact-pending" title="Public email pending">Email</span>')
         set_inner_html(links, "".join(parts))
+
+
+def project_actions_html(project: dict, href: str) -> str:
+    repo = str(project.get("repository_url", "")).strip()
+    github = (
+        f'<a class="text-link project-github" href="{esc(repo)}" target="_blank" rel="noreferrer">GitHub ↗</a>'
+        if repo else
+        '<span class="text-link text-link-muted project-github" title="Repository link pending">GitHub</span>'
+    )
+    return f'<div class="project-actions"><a class="text-link" href="{esc(href)}">Read more →</a>{github}</div>'
 
 
 def build_home(projects: list[dict], site: dict) -> None:
@@ -295,6 +311,14 @@ def build_home(projects: list[dict], site: dict) -> None:
         visual["src"] = str(home.get("hero_visual", "/assets/media/site/home-global-intelligence.webp"))
         visual["alt"] = str(home.get("hero_visual_alt", "Global data-intelligence visual"))
 
+    resume_slot = soup.select_one("[data-resume-slot]")
+    if resume_slot:
+        resume_file = str(settings.get("resume_file", "")).strip()
+        if resume_file:
+            set_inner_html(resume_slot, f'<span class="hero-resume-icon" aria-hidden="true">▤</span><a class="hero-resume-link" href="{esc(resume_file)}" target="_blank" rel="noreferrer">Download résumé (PDF) <span aria-hidden="true">↓</span></a>')
+        else:
+            set_inner_html(resume_slot, '<span class="hero-resume-icon" aria-hidden="true">▤</span><span class="hero-resume-label">Résumé (PDF) forthcoming</span>')
+
     selected_heading = soup.select_one("#selected-title")
     if selected_heading:
         selected_heading.string = str(home.get("selected_work_heading", "Selected Work"))
@@ -306,15 +330,13 @@ def build_home(projects: list[dict], site: dict) -> None:
     cards = []
     show_images = bool(home.get("show_selected_work_images", True))
     for p in featured:
-        if p["case_study"]:
-            action = f'<a class="text-link" href="./work/{esc(p["slug"])}/">View Case Study →</a>'
-        else:
-            action = f'<span class="text-link text-link-muted" title="Case study in development">{esc(STATUS_LABELS.get(p["status"], p["status"]))}</span>'
+        action = project_actions_html(p, f'./work/{p["slug"]}/')
         image = str(p.get("cover_image", "")).strip()
         image_html = ""
         if show_images and image:
             image_html = f'<img class="teaser-image" src="{esc(image)}" alt="{esc(p.get("cover_alt") or p["title"])}" />'
-        cards.append(f'<article class="teaser">{image_html}<div class="teaser-body"><h3>{esc(p["title"])}</h3><p class="small">{esc(p["short_label"])}</p>{action}</div></article>')
+        tags = ''.join(f'<span>{esc(tag)}</span>' for tag in p.get("categories", [])[:3])
+        cards.append(f'<article class="teaser">{image_html}<div class="teaser-body"><h3>{esc(p["title"])}</h3><p class="teaser-summary">{esc(p["summary"])}</p><div class="teaser-tags">{tags}</div>{action}</div></article>')
     grid = soup.select_one(".teaser-grid")
     if grid:
         set_inner_html(grid, "".join(cards))
@@ -393,10 +415,7 @@ def build_work(projects: list[dict], site: dict) -> None:
         tags = "".join(f'<span class="tag">{esc(t)}</span>' for t in p["categories"])
         if p["status"] == "demonstration":
             tags += '<span class="status-label">Demonstration</span>'
-        if p["case_study"]:
-            action = f'<a class="text-link" href="./{esc(p["slug"])}/">View Case Study →</a>'
-        else:
-            action = f'<span class="text-link text-link-muted" title="Case study in development">{esc(STATUS_LABELS.get(p["status"], p["status"]))}</span>'
+        action = project_actions_html(p, f'./{p["slug"]}/')
         cards.append(f'''<article class="project-card" data-category="{esc(' '.join(p['filter_keys']))}" data-project-card="">{img_html}<div class="project-card-body"><h2>{esc(p['title'])}</h2><p>{esc(p['summary'])}</p><div class="tags">{tags}</div>{action}</div></article>''')
     grid = soup.select_one(".project-grid")
     if grid:
@@ -476,7 +495,7 @@ def header_html(depth: int, current: str, settings: dict) -> str:
     def nav(link: str, label: str, key: str) -> str:
         current_attr = ' aria-current="page"' if current == key else ''
         return f'<a{current_attr} href="{prefix}{link}">{label}</a>'
-    return f'''<header class="site-header"><div class="container header-inner"><a class="brand" href="{prefix}"><img alt="{esc(settings.get('brand_logo_alt',''))}" src="{esc(settings.get('brand_logo', '/assets/media/site/monogram.svg'))}"/><span>{esc(settings.get('site_title','Steve Muganda'))}</span></a><button aria-expanded="false" aria-label="Open navigation" class="nav-toggle" data-nav-toggle=""><span></span></button><nav class="site-nav" data-nav="">{nav('', 'Home', 'home')}{nav('work/', 'Work', 'work')}{nav('about/', 'About', 'about')}{nav('notes/', 'Notes', 'notes')}<a class="button button-primary" href="#contact">{esc(settings.get('work_with_me_label','Work with me'))}</a></nav></div></header>'''
+    return f'''<header class="site-header"><div class="container header-inner"><a class="brand" href="{prefix}"><img alt="{esc(settings.get('brand_logo_alt',''))}" src="{esc(settings.get('brand_logo', '/assets/media/site/monogram.svg'))}"/><span>{esc(settings.get('site_title','Steve Muganda'))}</span></a><button aria-expanded="false" aria-label="Open navigation" class="nav-toggle" data-nav-toggle=""><span></span></button><nav class="site-nav" data-nav="">{nav('', 'Home', 'home')}{nav('work/', 'Work', 'work')}{nav('notes/', 'Notes', 'notes')}{nav('about/', 'About', 'about')}<a href="/contact/">Contact</a></nav></div></header>''' 
 
 
 def global_footer_html(settings: dict, depth: int = 0) -> str:
@@ -489,7 +508,7 @@ def global_footer_html(settings: dict, depth: int = 0) -> str:
     if linkedin: links.append(f'<a href="{esc(linkedin)}" rel="noreferrer" target="_blank">LinkedIn ↗</a>')
     else: links.append('<span class="contact-pending" title="Add public LinkedIn URL before launch">LinkedIn</span>')
     if email: links.append(f'<a href="mailto:{esc(email)}">Email</a>')
-    else: links.append('<span class="contact-pending" title="Add public email address before launch">Email</span>')
+    else: links.append('<span class="contact-pending" title="Public email pending">Email</span>')
     return f'<footer class="contact-footer" id="contact"><div class="container contact-inner"><div class="contact-links">{"".join(links)}</div><div class="contact-modes">{esc(settings.get("availability", "Employment · Freelance · Collaboration"))}</div></div></footer>'
 
 
@@ -569,6 +588,7 @@ def build_about(site: dict) -> None:
     if cta_text: cta_text.string = str(site["direction"].get("cta", ""))
     cta_link = soup.select_one(".about6-cta a")
     if cta_link:
+        cta_link["href"] = "/contact/"
         set_inner_html(cta_link, esc(settings.get("work_with_me_label", "Work with me")) + ' <span>→</span>')
     contact = soup.select_one(".about6-contact")
     if contact:
@@ -583,6 +603,32 @@ def build_about(site: dict) -> None:
     target = OUT / "about" / "index.html"
     target.parent.mkdir(parents=True, exist_ok=True)
     target.write_text(str(soup), encoding="utf-8")
+
+
+def build_contact(site: dict) -> None:
+    settings = site["settings"]
+    copy = site["contact"]
+    methods = []
+    github = str(settings.get("github_url", "")).strip()
+    linkedin = str(settings.get("linkedin_url", "")).strip()
+    email = str(settings.get("email", "")).strip()
+    location = str(settings.get("location", "")).strip()
+    if email:
+        methods.append(f'<a class="contact-method" href="mailto:{esc(email)}"><span>Email</span><strong>{esc(email)}</strong></a>')
+    else:
+        methods.append('<div class="contact-method contact-method-pending"><span>Email</span><strong>Public email forthcoming</strong></div>')
+    if linkedin:
+        methods.append(f'<a class="contact-method" href="{esc(linkedin)}" target="_blank" rel="noreferrer"><span>LinkedIn</span><strong>Professional profile ↗</strong></a>')
+    else:
+        methods.append('<div class="contact-method contact-method-pending"><span>LinkedIn</span><strong>Profile forthcoming</strong></div>')
+    if github:
+        methods.append(f'<a class="contact-method" href="{esc(github)}" target="_blank" rel="noreferrer"><span>GitHub</span><strong>Repositories ↗</strong></a>')
+    if location:
+        methods.append(f'<div class="contact-method"><span>Location</span><strong>{esc(location)}</strong></div>')
+    html_doc = f'''<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/><meta name="description" content="Contact Steve Muganda for employment, freelance and collaborative work."/><meta name="theme-color" content="#123D32"/><title>Contact | Steve Muganda</title><link rel="preconnect" href="https://fonts.googleapis.com"/><link crossorigin href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Playfair+Display:ital,wght@0,500;1,500&amp;display=swap" rel="stylesheet"/><link href="../assets/css/styles.css" rel="stylesheet"/></head><body><a class="skip-link" href="#main">Skip to content</a>{header_html(1, '', settings)}<main class="container page" id="main"><header class="page-heading contact-page-heading"><p class="eyebrow">{esc(copy.get('eyebrow','Contact'))}</p><h1>{esc(copy.get('heading','Work together'))}</h1><p class="small">{esc(copy.get('intro',''))}</p></header><section class="contact-page-grid" aria-label="Contact options">{''.join(methods)}</section><section class="contact-page-note"><h2>{esc(copy.get('availability_heading','Availability'))}</h2><p>{esc(settings.get('availability','Employment · Freelance · Collaboration'))}</p></section></main>{global_footer_html(settings)}<script defer src="../assets/js/site.js"></script></body></html>'''
+    target = OUT / "contact" / "index.html"
+    target.parent.mkdir(parents=True, exist_ok=True)
+    target.write_text(html_doc, encoding="utf-8")
 
 
 def build_notes_index(notes: list[dict], site: dict) -> None:
@@ -675,8 +721,9 @@ def main() -> int:
         build_home(projects, site)
         build_work(projects, site)
         build_about(site)
+        build_contact(site)
         for project in projects:
-            if project["visible"] and project["case_study"]:
+            if project["visible"]:
                 build_case_study(project, site)
         build_notes_index(notes, site)
         build_feed(notes)
@@ -688,7 +735,7 @@ def main() -> int:
         return 1
     published_notes = sum(1 for n in notes if n["published"])
     draft_notes = sum(1 for n in notes if not n["published"])
-    case_studies = sum(1 for p in projects if p["visible"] and p["case_study"])
+    case_studies = sum(1 for p in projects if p["visible"])
     print(f"Built {OUT}: {len(projects)} project record(s), {case_studies} case study page(s), {published_notes} published note(s), {draft_notes} draft preview(s).")
     return 0
 

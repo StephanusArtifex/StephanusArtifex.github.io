@@ -144,3 +144,11 @@ Then open `http://127.0.0.1:8000`.
 - Keep unfinished work marked `In development` or `Demonstration`.
 - Enable a full case-study page only when its content is ready for public use.
 - Every meaningful uploaded image should have suitable alt text where the CMS exposes that field.
+
+## v14: contact, résumé and project links
+
+- All **Work with me** CTAs resolve to the generated `/contact/` page.
+- Upload the CV in **Contact & Site Settings → Résumé PDF**. The homepage then exposes a direct **Download résumé (PDF)** link beneath the hero actions. There is no separate résumé route.
+- Every visible project receives a generated detail page, so **Read more** always has a real destination.
+- Every project card shows **GitHub**. Populate **GitHub repository URL** in the project record to make it an external repository link. If the URL is blank, the label remains visibly pending rather than becoming a broken link.
+- Projects marked **Published** must have a repository URL; the production build rejects a published project without one.

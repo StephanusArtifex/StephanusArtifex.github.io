@@ -1,63 +1,41 @@
-# QA Report — v13 CMS-complete build
+# QA Report — v15 homepage implementation
 
-## Build
+## Scope
 
-- Production generator: passed
-- Draft-preview generator: passed
-- Python syntax validation: passed
-- Pages CMS YAML: parsed successfully
-- Site content YAML: parsed successfully
+This pass implements the approved portrait-led homepage while preserving the CMS-backed publishing architecture and the v14 contact/project-link fixes.
 
-## Static integrity
+## Implemented
 
-- unresolved local links/assets: 0
-- duplicate HTML IDs: 0
-- images without an `alt` attribute: 0
-- project records: 6
-- generated case studies: 1
-- Notes drafts available to local preview: 5
+- Hero keeps the narrowed professional scope: Data Analytics · Data Science · Machine Learning · Data Engineering.
+- Hook remains: “Analytics that inform. Models that forecast. Systems built to scale.”
+- Portrait remains CMS-driven from `content/site/profile.yml`.
+- Global intelligence visual remains CMS-replaceable from `content/site/homepage.yml`.
+- Map rendering is deliberately higher-saturation and higher-contrast than v14.
+- Continent labels are presentation overlays and do not alter the underlying media asset.
+- Résumé is no longer a route or navigation item.
+- `settings.resume_file` drives a direct homepage résumé/PDF artefact link; when blank, a non-broken placeholder is shown.
+- Selected Work cards show image, summary, category tags, `Read more`, and GitHub state.
+- All four capability icons are local SVG assets and remain replaceable through the Homepage CMS record.
+- Contact remains a real `/contact/` route.
 
-## CMS coverage
+## Automated checks
 
-### Browser-editable text/content
-- Homepage hero visual, headings, capabilities and confluence
-- Professional scope and homepage hook
-- Selected Work through project records
-- Work / case studies
-- About / Profile
-- Currently Exploring
-- Tech Stack
-- Current Direction
-- Work, Notes and About labels/headings
-- Contact and shared site settings
-- Notes articles
+Validated against both production and draft-inclusive builds:
 
-### Browser-editable media
-- Homepage global data visual
-- Profile portrait used on Home and About
-- Project cover images used on Home and Work
-- Notes preview and article-body images
-- Technology icons
-- Brand monogram / logo
-- Optional capability icons
+- CMS YAML parses successfully.
+- Python build/preview scripts compile.
+- 0 unresolved internal links.
+- 0 duplicate HTML ids.
+- 0 missing `alt` attributes on images.
+- 0 `/resume/` links in generated HTML.
+- No generated `/resume/` directory.
+- 4 capability icon images render from CMS-backed records.
+- 3 Selected Work cards contain project actions.
+- CSS braces balance.
 
-All current editable image references have been migrated into their configured `assets/media/...` libraries.
+## Content still pending
 
-## Content integrity
-
-- No fabricated project results were introduced.
-- Observed Impact remains distinct from model results and business implications.
-- Unfinished Notes remain drafts.
-- Unfinished projects remain marked as development/demonstration records.
-
-## Responsive implementation
-
-The Home template now uses the approved hierarchy: portrait on the identity side, atmospheric global data-intelligence field as the technical layer, the market-facing hook, image-backed Selected Work, and the restrained four-part capability band. Mobile rules collapse the hero and content grids rather than merely shrinking them.
-
-## Remaining launch inputs
-
-- public LinkedIn URL
-- public email
-- final confirmation of the portrait intended for publication
-- genuine repository/live-demo links as projects mature
-- validated evidence for published case studies
+- Public résumé PDF upload.
+- Public LinkedIn URL and email, if desired.
+- Repository URLs for project records currently showing GitHub as pending.
+- Validated evidence for project records still marked demonstration/in-development.

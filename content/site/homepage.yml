@@ -6,21 +6,21 @@ selected_work_view_all_label: View all work
 capabilities_heading: Capabilities
 capabilities:
 - title: Analytics & BI
-  body: SQL analysis, data modelling and decision-ready dashboards.
+  body: Turning data into clear, actionable insights.
   icon_label: BI
-  icon: ''
+  icon: /assets/media/site/icon-analytics.svg
 - title: Data Engineering
-  body: Reliable ingestion, transformation, orchestration and data pipelines.
+  body: Building reliable, scalable data pipelines.
   icon_label: DE
-  icon: ''
+  icon: /assets/media/site/icon-data-engineering.svg
 - title: Data Science
-  body: Statistical analysis, experimentation, forecasting and segmentation.
+  body: Extracting value from complex data.
   icon_label: DS
-  icon: ''
+  icon: /assets/media/site/icon-data-science.svg
 - title: Machine Learning
-  body: Classification, regression, model evaluation and scalable workflows.
+  body: Developing models for real-world impact.
   icon_label: ML
-  icon: ''
+  icon: /assets/media/site/icon-machine-learning.svg
 confluence:
 - Data
 - Structure

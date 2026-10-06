@@ -72,3 +72,7 @@ See `CMS-PUBLISHING.md` for the publishing workflow.
 ## v13 CMS media
 
 Homepage visuals, profile images, project covers, Note images, technology icons and the brand mark are now CMS media fields. See `CMS-PUBLISHING.md`.
+
+## v14 navigation and project-link contract
+
+`/contact/` is a generated route. Global CTAs use `/contact/`. Résumé is not a separate page: upload the PDF through **Contact & Site Settings → Résumé PDF** and the homepage link beneath the hero actions points directly to that artefact. Visible work always receives a detail page and a `Read more` action. Repository actions are driven by each project record's `repository_url` field.

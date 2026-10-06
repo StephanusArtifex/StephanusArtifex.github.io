@@ -50,6 +50,15 @@ media:
   - jpeg
   - webp
   - svg
+- name: document_media
+  label: Documents
+  input: assets/media/documents
+  output: /assets/media/documents
+  rename: safe
+  categories:
+  - document
+  extensions:
+  - pdf
 - name: tech_media
   label: Technology icons
   input: assets/media/tech
@@ -320,7 +329,7 @@ content:
       type: text
       required: false
     - name: repository_url
-      label: Repository URL
+      label: GitHub repository URL
       type: string
       required: false
     - name: live_demo_url
@@ -626,8 +635,44 @@ content:
       label: Availability line
       type: string
       required: true
+    - name: resume_file
+      label: Résumé PDF
+      type: file
+      required: false
+      description: Upload or replace the public résumé PDF. When supplied, the homepage résumé link points directly to this file.
+      options:
+        media: document_media
+        extensions:
+        - pdf
+        categories:
+        - document
+        rename: safe
     - name: work_with_me_label
       label: CTA label
+      type: string
+      required: true
+  - name: contact-page
+    label: Contact Page
+    type: file
+    path: content/site/contact.yml
+    format: yaml
+    operations:
+      delete: false
+    fields:
+    - name: eyebrow
+      label: Eyebrow
+      type: string
+      required: true
+    - name: heading
+      label: Heading
+      type: string
+      required: true
+    - name: intro
+      label: Introduction
+      type: text
+      required: true
+    - name: availability_heading
+      label: Availability heading
       type: string
       required: true
   - name: page-copy
