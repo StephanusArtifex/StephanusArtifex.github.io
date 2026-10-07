@@ -1,27 +1,26 @@
 hero_visual: /assets/media/site/home-global-intelligence.webp
-hero_visual_alt: Global data-intelligence map with regional colour, network
-  paths and analytical motifs
+hero_visual_alt: Global data-intelligence map with regional colour, network paths
+  and analytical motifs
 selected_work_heading: Selected Work
 selected_work_view_all_label: View all work
-show_selected_work_images: false
-capabilities_heading: Capabilities
+capabilities_heading: Practice
 capabilities:
-  - title: Analytics & BI
-    body: SQL analysis, data modelling and decision-ready dashboards.
-    icon_label: BI
-  - title: Data Engineering
-    body: Reliable ingestion, transformation, orchestration and data pipelines.
-    icon_label: DE
-  - title: Data Science
-    body: Statistical analysis, experimentation, forecasting and segmentation.
-    icon_label: DS
-  - title: Machine Learning
-    body: Classification, regression, model evaluation and scalable workflows.
-    icon_label: ML
-confluence:
-  - Data
-  - Structure
-  - Analysis
-  - Models
-  - Intelligence
-  - Systems
+- title: Analytics & BI
+  body: Turning data into clear, actionable insights and decision-ready dashboards.
+  icon_label: BI
+  icon: /assets/media/site/icons/analytics.svg
+- title: Data Engineering
+  body: Building reliable, scalable data pipelines and modern data infrastructure.
+  icon_label: DE
+  icon: /assets/media/site/icons/engineering.svg
+- title: Data Science
+  body: Extracting value from complex data through statistical analysis and experimentation.
+  icon_label: DS
+  icon: /assets/media/site/icons/science.svg
+- title: Machine Learning
+  body: Developing models for real-world use, from prediction to evaluation and scalable
+    workflows.
+  icon_label: ML
+  icon: /assets/media/site/icons/ml.svg
+show_selected_work_images: true
+practice_intro: Turning data into clarity. Building models for what’s next.

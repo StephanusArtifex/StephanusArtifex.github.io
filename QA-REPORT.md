@@ -1,41 +1,38 @@
-# QA Report — v15 homepage implementation
+# QA Report — v20 mobile map-label restoration
 
-## Scope
+## Purpose
 
-This pass implements the approved portrait-led homepage while preserving the CMS-backed publishing architecture and the v14 contact/project-link fixes.
+This follow-up addresses the mobile map losing geographic meaning. The desktop composition remains unchanged. The mobile hero keeps the v19 structure while restoring explicit continent labels over the analytical world field.
 
-## Implemented
+## Rectifications
 
-- Hero keeps the narrowed professional scope: Data Analytics · Data Science · Machine Learning · Data Engineering.
-- Hook remains: “Analytics that inform. Models that forecast. Systems built to scale.”
-- Portrait remains CMS-driven from `content/site/profile.yml`.
-- Global intelligence visual remains CMS-replaceable from `content/site/homepage.yml`.
-- Map rendering is deliberately higher-saturation and higher-contrast than v14.
-- Continent labels are presentation overlays and do not alter the underlying media asset.
-- Résumé is no longer a route or navigation item.
-- `settings.resume_file` drives a direct homepage résumé/PDF artefact link; when blank, a non-broken placeholder is shown.
-- Selected Work cards show image, summary, category tags, `Read more`, and GitHub state.
-- All four capability icons are local SVG assets and remain replaceable through the Homepage CMS record.
-- Contact remains a real `/contact/` route.
+- Restored all six geographic overlay labels on mobile: **North America, South America, Europe, Africa, Asia and Oceania**.
+- Repositioned the labels for the mobile crop rather than inheriting the desktop coordinates.
+- Widened the mobile map framing so Asia and Oceania remain visibly represented instead of being pushed off-frame by the former zoom.
+- Increased label weight and added a restrained ivory backing/text halo so the labels remain readable over mixed map tones.
+- Retained the antique-gold tether line and point-marker language used on desktop.
+- Kept the portrait, map crop, hero hook, three peer actions, discipline rail, Selected Work, Practice, contact order and desktop rules unchanged.
+- All v20 changes are scoped to `max-width: 760px` and below.
 
-## Automated checks
+## Build verification
 
-Validated against both production and draft-inclusive builds:
+### Production build
+- Build: **passed**
+- Project records: **6**
+- Generated project detail pages: **5 visible projects**
+- Published Notes: **0**
+- Draft Notes exposed: **0**
 
-- CMS YAML parses successfully.
-- Python build/preview scripts compile.
-- 0 unresolved internal links.
-- 0 duplicate HTML ids.
-- 0 missing `alt` attributes on images.
-- 0 `/resume/` links in generated HTML.
-- No generated `/resume/` directory.
-- 4 capability icon images render from CMS-backed records.
-- 3 Selected Work cards contain project actions.
-- CSS braces balance.
+### Automated QA
+
+Production result:
+
+**11 HTML pages · 106 image references · 0 unresolved local references · 0 duplicate IDs · 0 missing image alt attributes**
 
 ## Content still pending
 
-- Public résumé PDF upload.
-- Public LinkedIn URL and email, if desired.
-- Repository URLs for project records currently showing GitHub as pending.
-- Validated evidence for project records still marked demonstration/in-development.
+These remain deliberate content placeholders rather than technical faults:
+
+- LinkedIn public URL
+- Résumé PDF
+- project-specific GitHub repository URLs where not yet supplied

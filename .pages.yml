@@ -378,11 +378,15 @@ content:
       type: boolean
       default: true
     - name: capabilities_heading
-      label: Capabilities heading
+      label: Practice heading
       type: string
       required: true
+    - name: practice_intro
+      label: Practice introduction
+      type: string
+      required: false
     - name: capabilities
-      label: Capabilities
+      label: Practice areas
       type: object
       list:
         min: 1
@@ -417,12 +421,6 @@ content:
           - webp
           - svg
           rename: safe
-    - name: confluence
-      label: Confluence sequence
-      type: string
-      list:
-        min: 2
-        max: 10
   - name: profile
     label: About / Profile
     type: file
@@ -562,23 +560,15 @@ content:
         type: boolean
         default: true
   - name: current-direction
-    label: Current Direction
+    label: Collaboration Invitation
     type: file
     path: content/site/current-direction.yml
     format: yaml
     operations:
       delete: false
     fields:
-    - name: heading
-      label: Heading
-      type: string
-      required: true
-    - name: body
-      label: Direction
-      type: text
-      required: true
     - name: cta
-      label: Collaboration invitation
+      label: About-page collaboration invitation
       type: string
       required: true
   - name: site-settings
@@ -639,7 +629,7 @@ content:
       label: Résumé PDF
       type: file
       required: false
-      description: Upload or replace the public résumé PDF. When supplied, the homepage résumé link points directly to this file.
+      description: Upload or replace the public résumé. The homepage Résumé button links directly to this PDF; leave blank to keep the button as a styled placeholder.
       options:
         media: document_media
         extensions:
@@ -675,67 +665,3 @@ content:
       label: Availability heading
       type: string
       required: true
-  - name: page-copy
-    label: Page Headings & Labels
-    type: file
-    path: content/site/page-copy.yml
-    format: yaml
-    operations:
-      delete: false
-    fields:
-    - name: work_heading
-      label: Work page heading
-      type: string
-      required: true
-    - name: work_collaboration_prompt
-      label: Work collaboration prompt
-      type: text
-      required: true
-    - name: notes_eyebrow
-      label: Notes eyebrow
-      type: string
-      required: true
-    - name: notes_heading
-      label: Notes page heading
-      type: string
-      required: true
-    - name: notes_intro
-      label: Notes introduction
-      type: text
-      required: true
-    - name: notes_empty_eyebrow
-      label: Empty Notes eyebrow
-      type: string
-      required: true
-    - name: notes_empty_heading
-      label: Empty Notes heading
-      type: string
-      required: true
-    - name: notes_empty_body
-      label: Empty Notes message
-      type: text
-      required: true
-    - name: about_eyebrow
-      label: About label
-      type: string
-      required: true
-    - name: exploring_heading
-      label: Currently Exploring heading
-      type: string
-      required: true
-    - name: tech_stack_heading
-      label: Tech Stack heading
-      type: string
-      required: true
-    - name: beyond_work_heading
-      label: Beyond Work heading
-      type: string
-      required: true
-settings:
-  commit:
-    identity: user
-    templates:
-      create: 'content: create {filename}'
-      update: 'content: update {filename}'
-      delete: 'content: remove {filename}'
-      rename: 'content: rename {oldFilename} to {newFilename}'

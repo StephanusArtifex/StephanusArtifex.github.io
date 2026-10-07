@@ -1,137 +1,90 @@
 # CMS Publishing Workflow
 
-The portfolio is content-managed through Pages CMS while the visual constitution remains code-controlled.
+Pages CMS is the editorial layer; the visual constitution remains protected in code.
 
 ## Everyday workflow
 
 1. Sign into Pages CMS with GitHub.
-2. Open the `StephanusArtifex.github.io` repository.
-3. Choose the section you want to edit.
-4. Edit text, reorder items, upload/replace media, or publish content.
-5. Save.
-6. Pages CMS commits the change to GitHub.
-7. GitHub Actions runs `python tools/build.py`.
-8. GitHub Pages deploys the rebuilt site automatically.
+2. Open `StephanusArtifex.github.io`.
+3. Edit text, reorder items, replace media or publish content.
+4. Save.
+5. Pages CMS commits the change to GitHub.
+6. GitHub Actions runs `python tools/build.py`.
+7. GitHub Pages deploys the rebuilt site automatically.
 
 Routine publishing requires no HTML editing.
 
-## CMS areas
+## Homepage
 
-### Homepage
-Editable from one singleton record:
-- hero data-intelligence visual
-- hero visual alt text
+Editable fields include:
+- global data-intelligence visual and alt text
 - Selected Work heading and view-all label
-- whether project images appear in Selected Work
-- Capabilities heading
-- capability titles and descriptions
-- capability fallback letters or optional uploaded icons
-- Confluence sequence
+- whether project images appear
+- **Practice** heading and introduction
+- Practice titles, descriptions and replaceable icons
 
-The hero portrait and professional scope come from **About / Profile**, so Home and About stay consistent.
+The professional discipline rail, portrait and homepage hook derive from **About / Profile**, keeping identity consistent across Home and About.
 
-### Notes
-Create, revise, draft and publish technical articles.
+The Résumé button is driven by **Contact & Site Settings → Résumé PDF**. Upload or replace the PDF there. The button links directly to the file; there is no résumé page.
 
-Editable media:
-- preview image
-- images embedded inside the rich-text article body
+## Work / Case Studies
 
-Publishing automatically generates the Notes index, article page, metadata and RSS feed.
+Each project is one record. That record can drive the Work page, Selected Work on Home and its full project article.
 
-### Work / Case Studies
-Each project is one CMS record. The same record powers the Work page, Featured/Selected Work on Home, and any case-study page.
+Editable fields include title, summary, categories, cover image, display order, Home feature toggle, case-study evidence, repository URL and live-demo URL.
 
-Editable content includes:
-- title, summary and taxonomy
-- Work visibility and ordering
-- Home feature toggle and ordering
-- project cover image and alt text
-- technology stack
-- case-study publication and evidence sections
-- repository and live-demo links
+Every showcased work receives:
+- **Read more** → its generated project article
+- **GitHub** → its repository URL once supplied
 
-`Feature on Home` controls Selected Work. Project images shown there come from the same editable `Project image` field used on Work.
+## Notes
 
-### About / Profile
-Editable:
-- name
-- professional disciplines
-- homepage hook
-- People / Data / Systems / Impact manifesto
-- About copy
-- Focus, Approach, Interests and Collaboration
-- inscription
-- Beyond Work
-- portrait
+Create, revise, draft and publish technical articles. Preview images and images inside the rich-text body can be uploaded directly. Publishing regenerates the Notes index, article route, metadata and RSS feed.
 
-The same uploaded portrait is used on both Home and About.
+## About / Profile
 
-### Currently Exploring
-Editable ordered list for the About timeline.
+Editable fields include name, disciplines, homepage hook, portrait, About copy, Focus, Approach, Interests, Collaboration, inscription and Beyond Work. The same portrait is used on Home and About.
 
-### Tech Stack
-Each technology can be added, hidden, reordered or renamed. Its icon is an **image field**, so icons can be uploaded and replaced directly in the CMS.
+## Currently Exploring / Tech Stack
 
-### Current Direction
-Editable Home-page Current Direction heading, body and collaboration invitation.
+Currently Exploring is an editable ordered list. Tech Stack entries can be added, hidden, reordered, renamed and given replacement icon files.
 
-### Page Headings & Labels
-Editable labels for the Work, Notes and About information sections, including the Notes empty state.
+## Collaboration Invitation
 
-### Contact & Site Settings
+The About-page collaboration invitation is editable from the CMS without changing the page layout.
+
+## Contact & Site Settings
+
 One source of truth for:
 - site title and description
-- brand monogram/logo image
-- GitHub, LinkedIn and public email
-- location / remote status
+- brand monogram/logo
+- GitHub URL
+- LinkedIn URL
+- public email
+- location
 - availability line
+- Résumé PDF
 - Work with me label
+
+Public location is currently **Nairobi**.
 
 ## Media libraries
 
-The CMS exposes separate media libraries so replacements remain organised:
+- Notes images → `assets/media/notes`
+- Project images → `assets/media/projects`
+- Profile images → `assets/media/profile`
+- Site visuals and Practice icons → `assets/media/site`
+- Technology icons → `assets/media/tech`
+- Documents → `assets/media/documents`
 
-- `Notes images` → `assets/media/notes`
-- `Project images` → `assets/media/projects`
-- `Profile images` → `assets/media/profile`
-- `Site visuals` → `assets/media/site`
-- `Technology icons` → `assets/media/tech`
+## Protected in code
 
-When you replace an image in the CMS, the content record receives the new repository path and the next build uses it automatically. No HTML path editing is required.
-
-## What remains protected in code
-
-The CMS does not expose:
-- colour tokens
-- typography
-- grid geometry
-- lancet architecture
-- ornament rules
-- responsive breakpoints
-- interaction logic
-- accessibility behaviour
-- chart colour semantics
-
-This keeps content flexible without turning the portfolio into a page builder.
+The CMS does not expose colour tokens, typography, responsive breakpoints, lancet geometry, ornament rules, interaction logic, accessibility behaviour or chart-colour semantics.
 
 ## Local preview
 
-Install dependencies once:
-
 ```bash
-pip install -r requirements.txt
-```
-
-Preview the production content set:
-
-```bash
-python tools/preview.py
-```
-
-Preview Notes drafts as well:
-
-```bash
+python -m pip install -r requirements.txt
 python tools/preview.py --drafts
 ```
 
@@ -139,16 +92,4 @@ Then open `http://127.0.0.1:8000`.
 
 ## Content integrity
 
-- Do not publish fabricated project metrics.
-- Use **Observed Impact** only for genuine evidenced outcomes.
-- Keep unfinished work marked `In development` or `Demonstration`.
-- Enable a full case-study page only when its content is ready for public use.
-- Every meaningful uploaded image should have suitable alt text where the CMS exposes that field.
-
-## v14: contact, résumé and project links
-
-- All **Work with me** CTAs resolve to the generated `/contact/` page.
-- Upload the CV in **Contact & Site Settings → Résumé PDF**. The homepage then exposes a direct **Download résumé (PDF)** link beneath the hero actions. There is no separate résumé route.
-- Every visible project receives a generated detail page, so **Read more** always has a real destination.
-- Every project card shows **GitHub**. Populate **GitHub repository URL** in the project record to make it an external repository link. If the URL is blank, the label remains visibly pending rather than becoming a broken link.
-- Projects marked **Published** must have a repository URL; the production build rejects a published project without one.
+Do not invent metrics, client names, impact or deployments. Use **Observed Impact** only for genuine evidenced outcomes. Keep unfinished work marked appropriately.

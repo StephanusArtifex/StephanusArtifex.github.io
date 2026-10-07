@@ -1,19 +1,16 @@
 # Pre-launch content
 
-The site mechanics and CMS are ready. Remaining items are real-world publication inputs:
+The site mechanics and CMS are ready. Remaining publication inputs are real-world content rather than layout work:
 
-- Add the public LinkedIn URL in **Contact & Site Settings**.
-- Add the public email in **Contact & Site Settings**.
+- Add the public LinkedIn URL in **Contact & Site Settings** when ready.
+- Upload the public résumé PDF in **Contact & Site Settings → Résumé PDF**. The homepage button links directly to that file; there is no résumé page.
 - Confirm or replace the profile portrait through **About / Profile**.
 - Replace project covers whenever stronger project-specific visuals become available.
-- Add genuine repository and live-demo links to project records.
+- Add the genuine GitHub repository URL for every showcased project.
+- Add live-demo links where a real demo exists.
 - Publish case-study evidence only after validation.
 - Finish and publish Notes when ready.
 
-All of the above can now be handled from Pages CMS without routine HTML editing.
+The public email is already configured as `mugandasteve@gmail.com`, and the public location is **Nairobi**.
 
-## v14 launch-critical links
-
-- Upload the public CV PDF under **Contact & Site Settings → Résumé PDF**. The homepage link will then point directly to the file.
-- Populate **GitHub repository URL** for every project you want to present as published work.
-- LinkedIn URL and public email remain optional until you are ready to expose them.
+All routine content and media changes can be made through Pages CMS without editing HTML.

@@ -76,6 +76,16 @@ Hook:
 
 **Analytics that inform. Models that forecast. Systems built to scale.**
 
+Homepage identity rules:
+- distribute the four professional disciplines evenly in a full-width rail beneath the header;
+- use the same four Antique Gold line icons in the discipline rail and Practice section;
+- integrate portrait and global intelligence field as one composition;
+- keep the map richly saturated and high-contrast, with continent labels visibly tethered to their geography;
+- package Work with me, View work and Résumé as equal hero actions;
+- Résumé links directly to the uploaded PDF and never has its own page;
+- use proper Email, LinkedIn, GitHub and Location marks wherever those contact methods appear;
+- public location: Nairobi.
+
 ### Selected Work
 
 - Customer Churn Intelligence — Predictive analytics · ML
@@ -84,28 +94,17 @@ Hook:
 
 Project CTAs use Charcoal with Cathedral Green hover. Never Rubric Red.
 
-### Capabilities
+### Practice
 
-- Analytics & BI: SQL analysis, data modelling and decision-ready dashboards.
-- Data Pipelines: reliable ingestion, transformation, orchestration and monitoring.
-- Data Science: statistical analysis, experimentation, forecasting and segmentation.
-- Machine Learning: classification, regression, model evaluation and production-minded workflows.
+- Analytics & BI: clear analysis and decision-ready dashboards.
+- Data Engineering: reliable, scalable data pipelines and infrastructure.
+- Data Science: statistical analysis, experimentation and structured inference.
+- Machine Learning: prediction, evaluation and scalable workflows.
 
-### Confluence
+Each area uses a matched Antique Gold line icon. The heading is **Practice**, not Capabilities.
 
-**Data → Structure → Analysis → Models → Intelligence → Systems**
 
-Do not explain it with additional prose on Home.
-
-### Current Direction
-
-Factual side:
-
-**Building across the full data lifecycle: analytical reporting, reliable pipelines, statistical modelling, machine learning and scalable delivery.**
-
-Invitation side:
-
-**Let’s build something remarkable together.**
+The homepage then resolves directly into Selected Work, Practice and the site footer.
 
 ## Work
 
@@ -220,7 +219,7 @@ Design deliberately for wide desktop, laptop, tablet landscape, tablet portrait,
 
 - Hero: two columns on desktop, single reading flow on mobile.
 - Selected Work: three columns to one.
-- Capabilities: four columns, then two, then one.
+- Practice: four columns, then two, then one.
 - Case Study: side navigation becomes horizontal or collapsible.
 - Notes: article list and visual preview stack on mobile.
 - About: three-column editorial composition on desktop; on mobile, the side rails disappear and the centre lancet becomes the complete reading flow while its crown and continuous rails remain intact.
@@ -267,7 +266,7 @@ CMS-managed image slots include the brand mark, homepage data field, profile por
 ## v14 interaction contract
 
 - `Work with me` always opens the dedicated Contact page.
-- Résumé is a direct homepage artefact link beneath the hero actions. It never receives a dedicated page.
+- `Résumé` is a first-class navigation/footer item and remains a deliberate placeholder until a PDF is supplied.
 - Each showcased project presents two adjacent actions: **Read more** and **GitHub**.
 - **Read more** always resolves to a generated project article/detail page.
 - **GitHub** links to the project's repository when supplied; missing repository URLs display as pending, never as broken anchors.
