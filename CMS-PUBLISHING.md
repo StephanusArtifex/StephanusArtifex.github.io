@@ -63,7 +63,6 @@ One source of truth for:
 - public email
 - location
 - availability line
-- availability section introduction
 - Résumé PDF
 - Work with me label
 

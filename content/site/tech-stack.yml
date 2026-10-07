@@ -1,40 +1,43 @@
 items:
-  - name: Python
-    icon: /assets/media/tech/python.svg
-    visible: true
-  - name: SQL
-    icon: /assets/media/tech/sql.svg
-    visible: true
-  - name: Microsoft Excel
-    icon: /assets/media/tech/excel.svg
-    visible: true
-  - name: pandas
-    icon: /assets/media/tech/pandas.svg
-    visible: true
-  - name: Polars
-    icon: /assets/media/tech/polars.svg
-    visible: true
-  - name: scikit-learn
-    icon: /assets/media/tech/sklearn.svg
-    visible: true
-  - name: XGBoost
-    icon: /assets/media/tech/xgboost.svg
-    visible: false
-  - name: PyTorch
-    icon: /assets/media/tech/pytorch.svg
-    visible: true
-  - name: Airflow
-    icon: /assets/media/tech/airflow.svg
-    visible: true
-  - name: Docker
-    icon: /assets/media/tech/docker.svg
-    visible: true
-  - name: AWS
-    icon: /assets/media/tech/aws.svg
-    visible: false
-  - name: Power BI
-    icon: /assets/media/tech/powerbi.svg
-    visible: true
-  - name: Git
-    icon: /assets/media/tech/git.svg
-    visible: true
+- name: Python
+  icon: /assets/media/tech/python.svg
+  visible: true
+- name: SQL
+  icon: /assets/media/tech/sql.svg
+  visible: true
+- name: Microsoft Excel
+  icon: /assets/media/tech/excel.svg
+  visible: true
+- name: pandas
+  icon: /assets/media/tech/pandas.svg
+  visible: true
+- name: Polars
+  icon: /assets/media/tech/polars.svg
+  visible: true
+- name: scikit-learn
+  icon: /assets/media/tech/sklearn.svg
+  visible: true
+- name: XGBoost
+  icon: /assets/media/tech/xgboost.svg
+  visible: true
+- name: PyTorch
+  icon: /assets/media/tech/pytorch.svg
+  visible: true
+- name: Airflow
+  icon: /assets/media/tech/airflow.svg
+  visible: true
+- name: Docker
+  icon: /assets/media/tech/docker.svg
+  visible: true
+- name: AWS
+  icon: /assets/media/tech/aws.svg
+  visible: true
+- name: MySQL
+  icon: /assets/media/tech/mysql.svg
+  visible: true
+- name: Power BI
+  icon: /assets/media/tech/powerbi.svg
+  visible: true
+- name: Git
+  icon: /assets/media/tech/git.svg
+  visible: true

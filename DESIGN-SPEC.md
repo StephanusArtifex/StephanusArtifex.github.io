@@ -219,7 +219,7 @@ The visible stack includes Python, SQL, Microsoft Excel, pandas, Polars, scikit-
 
 **Employment · Freelance · Collaboration**
 
-Availability is a first-class Contact-page module, not a loose text note: it uses the same framed ivory surface, Antique Gold corner treatment, Oxford Blue display typography and internal rule system as the rest of the site. Employment, Freelance and Collaboration are presented as three equal status fields.
+Availability is a compact Contact-page status band using the same framed ivory surface, Antique Gold corner treatment and Oxford Blue display typography as the rest of the site. The heading appears once, followed directly by Employment, Freelance and Collaboration as three equal status fields; no explanatory sentence repeats those modes.
 
 ## Responsive behaviour
 

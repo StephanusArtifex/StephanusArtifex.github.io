@@ -1,5 +1,6 @@
-# v22 QA Report
+# v22.1 QA Report
 
+- Availability redundancy removed: one heading plus Employment, Freelance and Collaboration status fields; no repeated eyebrow or explanatory sentence.
 This pass applies the requested corrections to the actual source, CMS content and generated `_site` output.
 
 ## Corrected areas

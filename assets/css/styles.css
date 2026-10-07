@@ -2636,3 +2636,112 @@ a.home-contact-item:hover { background: rgb(237 228 210 / .32); }
 .availability-mode {
   background: rgba(255,252,246,.24);
 }
+
+/* ================================================================
+   v22.1 Availability de-duplication
+   One heading, three status fields. No repeated eyebrow or prose.
+   ================================================================ */
+.contact-availability {
+  display: grid;
+  grid-template-columns: minmax(155px,.72fr) minmax(0,2.28fr);
+}
+.contact-availability-head {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  padding: 1rem 1.2rem;
+  border-right: 1px solid var(--line);
+  border-bottom: 0;
+  background: linear-gradient(180deg, rgba(255,252,246,.60), rgba(247,243,233,.22));
+}
+.contact-availability-head h2 {
+  margin: 0;
+  font-size: 1.2rem;
+  line-height: 1.1;
+}
+.contact-availability-head > p,
+.contact-availability-head .eyebrow {
+  display: none;
+}
+.availability-modes {
+  min-width: 0;
+  grid-template-columns: repeat(3,minmax(0,1fr));
+}
+.availability-mode {
+  min-height: 72px;
+  padding: .9rem 1rem;
+}
+
+@media (max-width: 760px) {
+  .contact-availability {
+    grid-template-columns: 1fr;
+  }
+  .contact-availability-head {
+    padding: .9rem 1rem .72rem;
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .contact-availability-head h2 {
+    font-size: 1.08rem;
+  }
+  .availability-modes {
+    grid-template-columns: repeat(3,minmax(0,1fr));
+  }
+  .availability-mode {
+    min-height: 58px;
+    gap: .42rem;
+    padding: .72rem .58rem;
+  }
+  .availability-mark {
+    width: 9px;
+    height: 9px;
+    box-shadow: inset 0 0 0 2px var(--ivory);
+  }
+  .availability-mode strong {
+    font-size: .78rem;
+  }
+}
+
+@media (max-width: 390px) {
+  .availability-mode {
+    padding-inline: .45rem;
+  }
+  .availability-mode strong {
+    font-size: .72rem;
+  }
+}
+
+
+/* v22.2 Availability: plain typographic status, intentionally unboxed and non-tabular. */
+.contact-open-to {
+  max-width: 900px;
+  margin: 1.6rem auto 0;
+  text-align: center;
+}
+.contact-open-to h2 {
+  margin: 0 0 .58rem;
+  color: var(--brick-red);
+  font-family: var(--body);
+  font-size: .72rem;
+  font-weight: 500;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+}
+.contact-open-to-modes {
+  margin: 0;
+  color: var(--oxford-blue);
+  font-family: var(--display);
+  font-size: clamp(1.05rem, 1.5vw, 1.3rem);
+  line-height: 1.45;
+}
+.contact-open-to-sep {
+  display: inline-block;
+  margin: 0 .72rem;
+  color: color-mix(in srgb, var(--antique-gold) 82%, var(--muted));
+}
+@media (max-width: 480px) {
+  .contact-open-to { margin-top: 1.35rem; }
+  .contact-open-to h2 { margin-bottom: .45rem; }
+  .contact-open-to-modes { font-size: .98rem; white-space: nowrap; }
+  .contact-open-to-sep { margin-inline: .38rem; }
+}
