@@ -2571,3 +2571,68 @@ a.home-contact-item:hover { background: rgb(237 228 210 / .32); }
   .hero-home-v16 .map-label-eu::before,
   .hero-home-v16 .map-label-oc::before { top: calc(100% + 6px); }
 }
+
+/* ================================================================
+   v22 exact-build corrections
+   These overrides are applied to the source stylesheet and rebuilt output.
+   ================================================================ */
+
+/* Mobile geographic labels: anchor labels directly over the visible landmasses. */
+@media (max-width: 760px) {
+  .hero-home-v16 .map-label {
+    transform: translateX(-50%);
+  }
+  .hero-home-v16 .map-label-na { left: 44%; top: 31%; }
+  .hero-home-v16 .map-label-sa { left: 52%; top: 42%; }
+  .hero-home-v16 .map-label-eu { left: 66%; top: 27.5%; }
+  .hero-home-v16 .map-label-af { left: 64%; top: 39%; }
+  .hero-home-v16 .map-label-as { left: 79%; top: 34%; }
+  .hero-home-v16 .map-label-oc { left: 82%; top: 46%; }
+
+  .hero-home-v16 .map-label::after { height: 5px; }
+  .hero-home-v16 .map-label::before { top: calc(100% + 6px); }
+}
+
+@media (max-width: 480px) {
+  .hero-home-v16 .map-label-na { left: 44%; top: 31%; }
+  .hero-home-v16 .map-label-sa { left: 51.5%; top: 42%; }
+  .hero-home-v16 .map-label-eu { left: 65.5%; top: 27.5%; }
+  .hero-home-v16 .map-label-af { left: 64%; top: 39%; }
+  .hero-home-v16 .map-label-as { left: 79%; top: 34%; }
+  .hero-home-v16 .map-label-oc { left: 82%; top: 46%; }
+}
+
+/* Practice is a complete table-like module, including a deliberate closing edge. */
+.practice-section .capability-grid {
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--antique-gold) 42%, var(--line));
+  border-radius: 6px;
+  background: rgba(255,252,246,.30);
+}
+.practice-section .capability {
+  background: linear-gradient(180deg, rgba(255,252,246,.36), rgba(247,243,233,.10));
+}
+.practice-section .capability::after {
+  bottom: 0;
+}
+
+/* Tech Stack: keep every technology tile equally resolved, including Excel and Polars. */
+.about6-tech-grid > div {
+  border-color: rgba(179,146,74,.28);
+  background: rgba(255,252,246,.62);
+}
+.about6-tech-grid img {
+  width: 32px;
+  height: 32px;
+}
+
+/* Availability: reinforce it as a first-class module rather than a loose text line. */
+.contact-availability {
+  box-shadow: 0 8px 22px rgba(20,43,74,.025);
+}
+.contact-availability-head {
+  background: linear-gradient(180deg, rgba(255,252,246,.58), rgba(247,243,233,.24));
+}
+.availability-mode {
+  background: rgba(255,252,246,.24);
+}
