@@ -47,7 +47,7 @@ Editable fields include name, disciplines, homepage hook, portrait, About copy, 
 
 ## Currently Exploring / Tech Stack
 
-Currently Exploring is an editable ordered list. Tech Stack entries can be added, hidden, reordered, renamed and given replacement icon files.
+Currently Exploring is an editable ordered list. Tech Stack entries can be added, hidden, reordered, renamed and given replacement icon files. The current baseline includes Microsoft Excel and Polars as first-class entries alongside pandas.
 
 ## Collaboration Invitation
 
@@ -63,6 +63,7 @@ One source of truth for:
 - public email
 - location
 - availability line
+- availability section introduction
 - Résumé PDF
 - Work with me label
 

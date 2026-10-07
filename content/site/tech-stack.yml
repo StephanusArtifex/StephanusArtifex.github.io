@@ -5,8 +5,14 @@ items:
 - name: SQL
   icon: /assets/media/tech/sql.svg
   visible: true
+- name: Microsoft Excel
+  icon: /assets/media/tech/excel.svg
+  visible: true
 - name: pandas
   icon: /assets/media/tech/pandas.svg
+  visible: true
+- name: Polars
+  icon: /assets/media/tech/polars.svg
   visible: true
 - name: scikit-learn
   icon: /assets/media/tech/sklearn.svg

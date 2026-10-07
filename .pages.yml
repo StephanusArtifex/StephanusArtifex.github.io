@@ -665,3 +665,7 @@ content:
       label: Availability heading
       type: string
       required: true
+    - name: availability_intro
+      label: Availability introduction
+      type: text
+      required: true

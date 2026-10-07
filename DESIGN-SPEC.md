@@ -103,6 +103,8 @@ Project CTAs use Charcoal with Cathedral Green hover. Never Rubric Red.
 
 Each area uses a matched Antique Gold line icon. The heading is **Practice**, not Capabilities.
 
+The four Practice areas sit inside one complete framed table: a fine Antique Gold perimeter, continuous internal rules, restrained field numbering and a quiet lower accent in each cell. The frame must remain visually closed at every breakpoint rather than trailing off after the final row.
+
 
 The homepage then resolves directly into Selected Work, Practice and the site footer.
 
@@ -154,7 +156,7 @@ The About page is a literal three-column editorial composition inside an ivory p
 
 - Left editorial rail: rubric marker, **ABOUT**, stacked **PEOPLE / DATA / SYSTEMS / IMPACT**, a short introductory line, section index, and the inscription.
 - Centre lancet: Antique Gold outer crown and rails, fine Oxford Blue inner crown and rails, portrait niche, SM medallion, name, discipline line, centred About copy, 2 × 2 Focus / Approach / Interests / Collaboration grid, Cathedral Green collaboration CTA, contact strip, and bottom ornament.
-- Right information rail: Currently Exploring timeline, 3-column Tech Stack icon grid, and Beyond Work.
+- Right information rail: Currently Exploring timeline, Tech Stack icon grid, and Beyond Work. The Tech Stack maintains a three-up rhythm; when the item count leaves two items on the final row, those two balance the full width deliberately.
 
 The gold and Oxford Blue lancet rails continue uninterrupted from the crown to the base. The centre panel uses fine rules and continuous grids, not floating cards.
 
@@ -205,6 +207,10 @@ Open to employment, freelance and collaborative work where technical depth, disc
 - Machine learning systems beyond notebook-scale experimentation
 - Reliable deployment patterns for machine-learning workflows
 
+### Tech Stack
+
+The visible stack includes Python, SQL, Microsoft Excel, pandas, Polars, scikit-learn, XGBoost, PyTorch, Airflow, Docker, AWS, MySQL, Power BI and Git. Each technology has a local icon asset; pandas and Polars remain distinct entries.
+
 ### Beyond Work
 
 **Outside technical work, I read widely, study languages and history, and return often to music, theology, philosophy and literature. I value long walks through unfamiliar places.**
@@ -212,6 +218,8 @@ Open to employment, freelance and collaborative work where technical depth, disc
 ### Availability
 
 **Employment · Freelance · Collaboration**
+
+Availability is a first-class Contact-page module, not a loose text note: it uses the same framed ivory surface, Antique Gold corner treatment, Oxford Blue display typography and internal rule system as the rest of the site. Employment, Freelance and Collaboration are presented as three equal status fields.
 
 ## Responsive behaviour
 

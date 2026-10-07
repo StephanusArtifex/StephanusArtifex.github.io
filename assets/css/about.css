@@ -238,3 +238,13 @@
   cursor: default;
 }
 .about6-contact-icon { width:16px; height:16px; flex:0 0 auto; }
+
+
+/* v21 Tech Stack completion: 3-up rhythm with a balanced 2-up final row. */
+.about6-tech-grid { grid-template-columns:repeat(6,minmax(0,1fr)); }
+.about6-tech-grid > div { grid-column:span 2; min-height:72px; }
+.about6-tech-grid > div:nth-last-child(2):nth-child(3n+1),
+.about6-tech-grid > div:nth-last-child(2):nth-child(3n+1) + div { grid-column:span 3; }
+.about6-tech-grid > div:last-child:nth-child(3n+1) { grid-column:3 / span 2; }
+.about6-tech-grid img { width:32px; height:32px; }
+.about6-tech-grid span { font-size:.57rem; }

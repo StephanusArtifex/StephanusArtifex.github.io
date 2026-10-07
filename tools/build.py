@@ -674,7 +674,13 @@ def build_contact(site: dict) -> None:
         '<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Playfair+Display:ital,wght@0,500;1,500&amp;display=swap" rel="stylesheet"/><link href="../assets/css/styles.css" rel="stylesheet"/></head><body>'
         f'<a class="skip-link" href="#main">Skip to content</a>{header_html(1, "contact", settings)}'
         f'<main class="container page" id="main"><header class="page-heading contact-page-heading"><p class="eyebrow">{esc(copy.get("eyebrow","Contact"))}</p><h1>{esc(copy.get("heading","Work together"))}</h1><p class="small">{esc(copy.get("intro",""))}</p></header>'
-        f'<section class="contact-page-grid" aria-label="Contact options">{body}</section><section class="contact-page-note"><h2>{esc(copy.get("availability_heading","Availability"))}</h2><p>{esc(settings.get("availability","Employment · Freelance · Collaboration"))}</p></section></main>'
+        f'<section class="contact-page-grid" aria-label="Contact options">{body}</section>'
+        f'<section class="contact-availability" aria-labelledby="availability-title">'
+        f'<div class="contact-availability-head"><div><p class="eyebrow">Open to</p><h2 id="availability-title">{esc(copy.get("availability_heading","Availability"))}</h2></div>'
+        f'<p>{esc(copy.get("availability_intro","Open to employment, freelance and collaborative work."))}</p></div>'
+        f'<div class="availability-modes">'
+        + ''.join(f'<div class="availability-mode"><span class="availability-mark" aria-hidden="true"></span><strong>{esc(mode.strip())}</strong></div>' for mode in re.split(r"\s*·\s*", str(settings.get("availability","Employment · Freelance · Collaboration"))) if mode.strip())
+        + '</div></section></main>'
         f'{global_footer_html(settings)}<script defer src="../assets/js/site.js"></script></body></html>'
     )
     target = OUT / "contact" / "index.html"

@@ -2338,3 +2338,236 @@ a.home-contact-item:hover { background: rgb(237 228 210 / .32); }
   .hero-home-v16 .map-label-as { left: 80%; top: 34%; }
   .hero-home-v16 .map-label-oc { left: 78%; top: 49%; }
 }
+
+
+/* ================================================================
+   v21 design completion
+   Availability, Practice, Tech Stack and geographic label alignment.
+   ================================================================ */
+
+/* Contact / Availability: treat availability as a peer module, not a note. */
+.contact-availability {
+  position: relative;
+  max-width: 900px;
+  margin: 1.35rem auto 0;
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--antique-gold) 52%, var(--line));
+  border-radius: 7px;
+  background: linear-gradient(145deg, rgba(255,252,246,.72), rgba(237,228,210,.28));
+  box-shadow: inset 0 0 0 3px rgba(179,146,74,.035);
+}
+.contact-availability::before,
+.contact-availability::after {
+  content: "";
+  position: absolute;
+  width: 26px;
+  height: 26px;
+  pointer-events: none;
+  opacity: .78;
+}
+.contact-availability::before {
+  left: 8px;
+  top: 8px;
+  border-left: 1px solid var(--antique-gold);
+  border-top: 1px solid var(--antique-gold);
+}
+.contact-availability::after {
+  right: 8px;
+  bottom: 8px;
+  border-right: 1px solid var(--antique-gold);
+  border-bottom: 1px solid var(--antique-gold);
+}
+.contact-availability-head {
+  display: grid;
+  grid-template-columns: minmax(170px,.42fr) minmax(0,1fr);
+  gap: 1.4rem;
+  align-items: end;
+  padding: 1.2rem 1.35rem 1rem;
+  border-bottom: 1px solid var(--line);
+}
+.contact-availability-head .eyebrow {
+  margin: 0 0 .18rem;
+  color: var(--rubric-red);
+  font-size: .64rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+.contact-availability-head h2 {
+  margin: 0;
+  color: var(--oxford-blue);
+  font-family: var(--display);
+  font-size: 1.35rem;
+  font-weight: 500;
+}
+.contact-availability-head > p {
+  justify-self: end;
+  max-width: 34rem;
+  margin: 0;
+  color: #667384;
+  font-family: var(--display);
+  font-size: .88rem;
+  line-height: 1.5;
+  text-align: right;
+}
+.availability-modes {
+  display: grid;
+  grid-template-columns: repeat(3,minmax(0,1fr));
+  gap: 1px;
+  background: var(--line);
+}
+.availability-mode {
+  position: relative;
+  min-height: 78px;
+  display: flex;
+  align-items: center;
+  gap: .7rem;
+  padding: 1rem 1.15rem;
+  background: color-mix(in srgb, var(--ivory) 96%, white);
+}
+.availability-mark {
+  width: 11px;
+  height: 11px;
+  flex: 0 0 auto;
+  border: 1px solid var(--antique-gold);
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 3px var(--ivory);
+  background: var(--cathedral-green);
+}
+.availability-mode strong {
+  color: var(--oxford-blue);
+  font-family: var(--display);
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+/* Practice: finish the four-field table as a complete visual object. */
+.practice-section { position: relative; }
+.practice-section .capability-grid {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--antique-gold) 36%, var(--line));
+  border-radius: 7px;
+  background: linear-gradient(180deg, rgba(255,252,246,.58), rgba(247,243,233,.18));
+  box-shadow: inset 0 0 0 3px rgba(179,146,74,.028);
+  counter-reset: practice-field;
+}
+.practice-section .capability {
+  position: relative;
+  min-height: 152px;
+  counter-increment: practice-field;
+  padding: 1.15rem 1.15rem 1.2rem;
+  border-right: 1px solid var(--line);
+  background: transparent;
+}
+.practice-section .capability::before {
+  content: "0" counter(practice-field);
+  position: absolute;
+  top: .64rem;
+  right: .72rem;
+  color: color-mix(in srgb, var(--antique-gold) 72%, var(--muted));
+  font-family: var(--body);
+  font-size: .54rem;
+  font-weight: 600;
+  letter-spacing: .12em;
+}
+.practice-section .capability::after {
+  content: "";
+  position: absolute;
+  left: 1.15rem;
+  right: 1.15rem;
+  bottom: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--antique-gold), rgba(179,146,74,0));
+  opacity: .42;
+}
+.practice-section .capability:last-child { border-right: 0; }
+.practice-section .capability-icon {
+  width: 48px;
+  height: 48px;
+  padding: 5px;
+  border: 1px solid rgba(179,146,74,.28);
+  border-radius: 5px;
+  background: rgba(255,252,246,.56);
+}
+.practice-section .capability-icon-image img { width: 38px; height: 38px; }
+.practice-section .capability h3 { margin-top: .08rem; }
+
+/* Map labels: explicitly anchor Europe to Europe and Asia to the Iran/Pakistan/China belt. */
+.hero-home-v16 .map-label-eu { left: 65%; transform: translateX(-50%); }
+.hero-home-v16 .map-label-as { left: 80%; transform: translateX(-50%); }
+
+@media (max-width: 960px) and (min-width: 761px) {
+  .practice-section .capability:nth-child(2) { border-right: 0; }
+  .practice-section .capability:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+}
+
+@media (max-width: 760px) {
+  .contact-availability-head {
+    grid-template-columns: 1fr;
+    gap: .45rem;
+    align-items: start;
+    padding: 1.05rem 1rem .85rem;
+  }
+  .contact-availability-head > p { justify-self: start; text-align: left; font-size: .82rem; }
+  .availability-modes { grid-template-columns: 1fr; }
+  .availability-mode { min-height: 62px; padding: .82rem 1rem; }
+
+  .practice-section .capability-grid { border-bottom: 1px solid color-mix(in srgb, var(--antique-gold) 36%, var(--line)); }
+  .practice-section .capability,
+  .practice-section .capability:nth-child(2) {
+    min-height: 0;
+    padding: .95rem .75rem;
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .practice-section .capability:last-child { border-bottom: 0; }
+  .practice-section .capability::after { left: .75rem; right: .75rem; opacity: .3; }
+  .practice-section .capability-icon { width: 44px; height: 44px; }
+  .practice-section .capability-icon-image img { width: 34px; height: 34px; }
+
+  .hero-home-v16 .map-label-eu { left: 68%; top: 30%; transform: translateX(-50%); }
+  .hero-home-v16 .map-label-as { left: 79%; top: 35%; transform: translateX(-50%); }
+}
+
+@media (max-width: 480px) {
+  .hero-home-v16 .map-label-eu { left: 68%; top: 30%; }
+  .hero-home-v16 .map-label-as { left: 79%; top: 35%; }
+}
+
+
+/* v21.1 mobile map-label tightening: pull Europe, South America, and Oceania back onto the visible landmasses. */
+@media (max-width: 760px) {
+  .hero-home-v16 .map-label-sa,
+  .hero-home-v16 .map-label-eu,
+  .hero-home-v16 .map-label-oc { transform: translateX(-50%); }
+
+  .hero-home-v16 .map-label-sa { left: 51.5%; top: 41.5%; }
+  .hero-home-v16 .map-label-eu { left: 66.5%; top: 28.5%; }
+  .hero-home-v16 .map-label-oc { left: 80.5%; top: 45.5%; }
+
+  .hero-home-v16 .map-label-sa::after,
+  .hero-home-v16 .map-label-eu::after,
+  .hero-home-v16 .map-label-oc::after { height: 6px; }
+
+  .hero-home-v16 .map-label-sa::before,
+  .hero-home-v16 .map-label-eu::before,
+  .hero-home-v16 .map-label-oc::before { top: calc(100% + 7px); }
+}
+
+@media (max-width: 480px) {
+  .hero-home-v16 .map-label-sa,
+  .hero-home-v16 .map-label-eu,
+  .hero-home-v16 .map-label-oc { transform: translateX(-50%); }
+
+  .hero-home-v16 .map-label-sa { left: 51%; top: 41%; }
+  .hero-home-v16 .map-label-eu { left: 66%; top: 28%; }
+  .hero-home-v16 .map-label-oc { left: 80%; top: 45%; }
+
+  .hero-home-v16 .map-label-sa::after,
+  .hero-home-v16 .map-label-eu::after,
+  .hero-home-v16 .map-label-oc::after { height: 5px; }
+
+  .hero-home-v16 .map-label-sa::before,
+  .hero-home-v16 .map-label-eu::before,
+  .hero-home-v16 .map-label-oc::before { top: calc(100% + 6px); }
+}

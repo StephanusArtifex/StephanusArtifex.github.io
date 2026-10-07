@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" role="img" aria-label="Microsoft Excel">
+  <rect x="5" y="7" width="23" height="34" rx="2.5" fill="#217346"/>
+  <path d="M12 16l10 16M22 16L12 32" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round"/>
+  <path d="M28 11h15v26H28" fill="#E8F3EC" stroke="#185C37" stroke-width="1.6"/>
+  <path d="M28 19h15M28 28h15M35.5 11v26" fill="none" stroke="#185C37" stroke-width="1.25" opacity=".78"/>
+</svg>
