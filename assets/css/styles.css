@@ -2745,3 +2745,41 @@ a.home-contact-item:hover { background: rgb(237 228 210 / .32); }
   .contact-open-to-modes { font-size: .98rem; white-space: nowrap; }
   .contact-open-to-sep { margin-inline: .38rem; }
 }
+
+
+/* v22.3 mobile hero refinement: reduce portrait dominance so North America remains legible. */
+@media (max-width: 760px) {
+  .hero-home-v16 .hero-identity {
+    grid-template-rows: auto minmax(160px, 1fr) auto auto;
+  }
+  .hero-home-v16 .hero-portrait-primary {
+    width: min(40vw, 146px);
+    margin: .48rem 0 0 0;
+  }
+  .hero-home-v16 .hero-global-field {
+    width: 148%;
+    left: -14%;
+    top: 3.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-home-v16 {
+    min-height: 540px;
+  }
+  .hero-home-v16 .hero-identity {
+    min-height: 515px;
+    grid-template-rows: auto minmax(150px, 1fr) auto auto;
+  }
+  .hero-home-v16 .hero-portrait-primary {
+    width: min(35vw, 132px);
+    margin: .36rem 0 0 .02rem;
+    box-shadow: 0 11px 24px rgb(20 43 74 / .08), 0 0 0 3px rgb(247 243 233 / .88);
+  }
+  .hero-home-v16 .hero-global-field {
+    width: 152%;
+    left: -18%;
+    top: 4rem;
+    object-position: 60% center;
+  }
+}
